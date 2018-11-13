@@ -58,6 +58,10 @@ export function makeDocumentSnapshot(
     project = get(options, 'app.options.projectId');
   } else {
     firestoreService = firestore(testApp().getApp());
+    const settings = {
+      timestampsInSnapshots: true
+    };
+    firestoreService.settings(settings);
     project = process.env.GCLOUD_PROJECT;
   }
 
